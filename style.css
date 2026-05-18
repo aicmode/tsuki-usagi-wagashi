@@ -1,0 +1,818 @@
+/* ═══════════════════════════════════════════════════════════════
+   月兎和菓子 — style.css
+   Luxury Japanese confectionery · Autumn Moon LP
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Design tokens ──────────────────────────────────────────── */
+:root {
+  /* Palette */
+  --gold:          #C9A84C;
+  --gold-light:    #E2C97E;
+  --gold-dim:      #A8904A;
+  --gold-border:   rgba(201,168,76,.28);
+  --gold-glow:     rgba(201,168,76,.12);
+  --ink:           #090705;
+  --ink-mid:       #0F0C08;
+  --ink-card:      #131009;
+  --moon:          #F5EDD4;
+  --text-primary:  #EDE0C4;
+  --text-sub:      #A89060;
+  --text-muted:    rgba(168,144,96,.50);
+
+  /* Typography */
+  --font-jp: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-en: 'Cormorant Garamond', 'Georgia', serif;
+
+  /* Layout */
+  --container: 1380px;
+
+  /* ─────────────────────────────────────────────────────────────
+     SUSUKI — width of each grass cluster
+     ───────────────────────────────────────────────────────────── */
+  --susuki-w-l: 21vw;
+  --susuki-w-r: 21vw;
+
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--ink);
+  color: var(--text-primary);
+  font-family: var(--font-jp);
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PARTICLES
+   ═══════════════════════════════════════════════════════════════ */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.6) 0%, transparent 70%);
+  opacity: 0;
+  animation: particleDrift var(--dur) ease-in-out infinite var(--del);
+}
+@keyframes particleDrift {
+  0%   { transform: translateY(0) translateX(0);          opacity: 0; }
+  8%   { opacity: 0.55; }
+  88%  { opacity: 0.20; }
+  100% { transform: translateY(-108vh) translateX(var(--tx)); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════════════ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 5rem;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(9,7,5,.88) 0%, transparent 100%);
+  transition: background .4s, backdrop-filter .4s;
+}
+.site-header.scrolled {
+  background: rgba(9,7,5,.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.header-inner {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: .18rem;
+}
+.logo-jp {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: 1rem;
+  letter-spacing: .44em;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.logo-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: .64rem;
+  letter-spacing: .26em;
+  color: var(--text-sub);
+}
+
+/* Nav */
+.main-nav {
+  display: flex;
+  gap: 3rem;
+}
+.main-nav a {
+  font-family: var(--font-en);
+  font-size: .74rem;
+  letter-spacing: .22em;
+  color: var(--text-sub);
+  text-decoration: none;
+  position: relative;
+  transition: color .3s;
+}
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  transform-origin: left;
+}
+.main-nav a:hover { color: var(--gold-light); }
+.main-nav a:hover::after { transform: scaleX(1); }
+
+/* Mobile menu toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--gold-light);
+  transition: transform .3s, opacity .3s;
+}
+/* Mobile nav open state — toggled by JS */
+.main-nav.nav-open {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  background: rgba(9,7,5,.97);
+  align-items: center;
+  justify-content: center;
+  gap: 2.8rem;
+  z-index: 190;
+}
+.main-nav.nav-open a {
+  font-size: 1.05rem;
+  letter-spacing: .3em;
+  color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* ── Hero background image ──
+   Image path: images/tsukimi-hero.jpg
+   Falls back to dark gradient + subtle stars when image is absent. */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/tsukimi-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #0D0B08;
+  /* CSS-only starfield shown when image is missing */
+  background-image:
+    url('images/tsukimi-hero.jpg'),
+    radial-gradient(1px 1px at 12% 18%, rgba(255,248,210,.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 34%  8%, rgba(255,248,210,.40) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 62% 14%, rgba(255,248,210,.50) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 22%, rgba(255,248,210,.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 10%, rgba(255,248,210,.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5%  38%, rgba(255,248,210,.28) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 30%, rgba(255,248,210,.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70%  5%, rgba(255,248,210,.38) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 50% at 50% 38%, #1A1508 0%, #0D0B07 60%, #090705 100%);
+  will-change: transform;
+}
+
+/* Cinematic vignette overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    /* Strong bottom fade — text legibility */
+    linear-gradient(to top,
+      rgba(9,7,5,.97)  0%,
+      rgba(9,7,5,.72) 16%,
+      rgba(9,7,5,.22) 38%,
+      rgba(9,7,5,.06) 58%,
+      rgba(9,7,5,.26) 82%,
+      rgba(9,7,5,.44) 100%),
+    /* Side vignettes */
+    linear-gradient(to right,
+      rgba(9,7,5,.62) 0%,
+      transparent 26%,
+      transparent 74%,
+      rgba(9,7,5,.62) 100%);
+}
+
+/* ── Moon / Rabbit ──
+   CSS製の月ディスク・SVGウサギは削除済み。
+   背景画像 images/tsukimi-hero.jpg の実写月・ウサギをそのまま使用。 */
+
+
+/* ── Susuki (pampas grass) ──
+   WIDTH: edit --susuki-w-l / --susuki-w-r in :root.
+   SWAY: edit @keyframes swayL / swayR below. */
+.susuki-left,
+.susuki-right {
+  position: absolute;
+  bottom: 0;
+  height: 88%;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+}
+.susuki-left  { left: 0;  width: var(--susuki-w-l); }
+.susuki-right { right: 0; width: var(--susuki-w-r); }
+
+/* PNG image (shown if file exists, hidden on error) */
+.susuki-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  transition: opacity .3s;
+}
+
+/* SVG fallback */
+.susuki-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* SWAY ADJUST: edit rotation range and duration here */
+.susuki-group-l {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: swayL 3.7s ease-in-out infinite alternate;
+  opacity: 0.78;
+}
+.susuki-group-r {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: swayR 4.3s ease-in-out infinite alternate;
+  opacity: 0.74;
+}
+@keyframes swayL {
+  from { transform: rotate(-1.6deg); }
+  to   { transform: rotate(1.4deg);  }
+}
+@keyframes swayR {
+  from { transform: rotate(1.4deg); }
+  to   { transform: rotate(-1.8deg); }
+}
+
+/* ── Hero text (cinematic centre-bottom) ── */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 2rem 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+}
+.hero-eyebrow {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: .80rem;
+  letter-spacing: .42em;
+  color: var(--text-sub);
+  opacity: 0;
+  animation: fadeUp .9s ease forwards .3s;
+}
+.hero-divider {
+  width: 42px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0;
+  animation: fadeUp .9s ease forwards .5s;
+}
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards .7s;
+}
+.hero-title-jp {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  letter-spacing: .2em;
+  color: var(--moon);
+  text-shadow: 0 2px 60px rgba(201,168,76,.22);
+  line-height: 1.15;
+}
+.hero-title-badge {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: clamp(.82rem, 1.4vw, 1.1rem);
+  letter-spacing: .55em;
+  color: var(--gold);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: .5rem 2.2rem;
+}
+.hero-tagline {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: clamp(.88rem, 1.3vw, 1.05rem);
+  letter-spacing: .2em;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards .9s;
+}
+.hero-tagline-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: .80rem;
+  letter-spacing: .12em;
+  color: var(--text-sub);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 1.05s;
+}
+.hero-cta {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: .9rem 3rem;
+  border: 1px solid var(--gold-border);
+  color: var(--gold-light);
+  font-family: var(--font-en);
+  font-size: .74rem;
+  letter-spacing: .34em;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color .4s;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 1.25s;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
+}
+.hero-cta:hover { color: var(--ink); }
+.hero-cta:hover::before { transform: translateX(0); }
+.hero-cta span { position: relative; z-index: 1; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll cue */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.scroll-line {
+  display: block;
+  width: 1px; height: 54px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0; transform: scaleY(.4) translateY(-12px); }
+  55%       { opacity: .65; transform: scaleY(1) translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION COMMONS
+   ═══════════════════════════════════════════════════════════════ */
+section { position: relative; z-index: 1; }
+
+.section-head {
+  text-align: center;
+  padding: 7.5rem 2rem 3.5rem;
+}
+.section-label {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: .74rem;
+  letter-spacing: .46em;
+  color: var(--text-sub);
+  margin-bottom: 1.1rem;
+}
+.section-title {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+  letter-spacing: .26em;
+  color: var(--text-primary);
+}
+.section-rule {
+  width: 44px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+}
+.section-desc {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: .84rem;
+  letter-spacing: .12em;
+  line-height: 2.1;
+  color: var(--text-sub);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRODUCT GRID
+   ═══════════════════════════════════════════════════════════════ */
+.products-section { padding-bottom: 8rem; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* Card */
+.card {
+  background: var(--ink-card);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid rgba(201,168,76,.08);
+  transition: transform .55s cubic-bezier(.22,1,.36,1),
+              box-shadow .55s cubic-bezier(.22,1,.36,1),
+              border-color .4s;
+}
+.card:hover {
+  transform: translateY(-9px);
+  box-shadow:
+    0 30px 72px rgba(0,0,0,.72),
+    0 0  55px rgba(201,168,76,.09),
+    inset 0 0 0 1px rgba(201,168,76,.24);
+  border-color: rgba(201,168,76,.24);
+  z-index: 2;
+}
+/* Subtle gold shimmer on card face */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(201,168,76,.04) 0%,
+    transparent 50%,
+    rgba(201,168,76,.02) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card photo */
+.card-photo {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.card-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(.92) saturate(1.08);
+  transition: transform .78s cubic-bezier(.22,1,.36,1),
+              filter .78s;
+  z-index: 1;
+}
+.card:hover .card-photo img {
+  transform: scale(1.09);
+  filter: brightness(.98) saturate(1.12);
+}
+/* Gradient fallback when photo is missing */
+.card-photo-fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg,
+    var(--fb-from, #1A1008) 0%,
+    var(--fb-to,   #090604) 100%);
+  z-index: 0;
+}
+/* Bottom gradient bleeds into card body */
+.card-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 44%;
+  background: linear-gradient(to top, rgba(9,7,5,.70) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Gold separator line */
+.card-rule {
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%, var(--gold) 22%, var(--gold) 78%, transparent 100%);
+  opacity: .40;
+}
+
+/* Card body */
+.card-body {
+  padding: 1.6rem 1.8rem 1.9rem;
+  position: relative;
+  /* Glass feel */
+  background: linear-gradient(160deg,
+    rgba(255,255,255,.025) 0%,
+    transparent 40%);
+}
+.card-name-jp {
+  font-family: var(--font-jp);
+  font-weight: 300;
+  font-size: 1.08rem;
+  letter-spacing: .24em;
+  color: var(--text-primary);
+  margin-bottom: .18rem;
+}
+.card-name-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: .74rem;
+  letter-spacing: .20em;
+  color: var(--text-sub);
+  margin-bottom: .9rem;
+}
+.card-desc {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: .76rem;
+  line-height: 2;
+  letter-spacing: .09em;
+  color: rgba(168,144,96,.76);
+  margin-bottom: 1.3rem;
+}
+.card-footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 1px solid rgba(201,168,76,.12);
+  padding-top: 1rem;
+}
+.card-price {
+  font-family: var(--font-en);
+  font-size: 1.04rem;
+  letter-spacing: .10em;
+  color: var(--gold-light);
+}
+.card-unit {
+  font-size: .66rem;
+  color: var(--text-sub);
+  margin-left: .1rem;
+}
+.card-tag {
+  font-family: var(--font-en);
+  font-size: .60rem;
+  letter-spacing: .24em;
+  color: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,.22);
+  padding: .22rem .65rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT
+   ═══════════════════════════════════════════════════════════════ */
+.about-section {
+  padding: 9rem 2rem 9rem;
+  position: relative;
+}
+.about-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 55% 45% at 50% 50%,
+    rgba(201,168,76,.045) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-ornament {
+  width: 1px; height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  margin: 0 auto 2.8rem;
+}
+.about-title {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: clamp(1.45rem, 2.7vw, 2.1rem);
+  letter-spacing: .26em;
+  color: var(--text-primary);
+  margin-bottom: .6rem;
+}
+.about-body {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: clamp(1rem, 1.55vw, 1.22rem);
+  letter-spacing: .20em;
+  line-height: 2.4;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+.about-divider {
+  width: 160px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 2.6rem auto;
+}
+.about-en {
+  font-family: var(--font-en);
+  font-weight: 300;
+  font-style: italic;
+  font-size: .98rem;
+  letter-spacing: .13em;
+  line-height: 2.2;
+  color: var(--text-sub);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════ */
+.site-footer {
+  border-top: 1px solid rgba(201,168,76,.13);
+  padding: 3.5rem 4rem;
+}
+.footer-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.footer-logo-jp {
+  font-family: var(--font-jp);
+  font-weight: 200;
+  font-size: .88rem;
+  letter-spacing: .44em;
+  color: var(--text-sub);
+}
+.footer-logo-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: .62rem;
+  letter-spacing: .24em;
+  color: var(--text-muted);
+}
+.footer-copy {
+  font-family: var(--font-en);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  color: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity  .85s cubic-bezier(.22,1,.36,1),
+    transform .85s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+/* Stagger cards in each row of four */
+.card.reveal:nth-child(4n+2) { transition-delay: .09s; }
+.card.reveal:nth-child(4n+3) { transition-delay: .18s; }
+.card.reveal:nth-child(4n+4) { transition-delay: .27s; }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 2.5rem;
+  }
+  .susuki-left, .susuki-right { width: 26vw; }
+}
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
+    gap: 1.2rem;
+  }
+  :root {
+    --susuki-w-l: 30vw;
+    --susuki-w-r: 30vw;
+  }
+  .site-header { padding: 0 2rem; }
+}
+@media (max-width: 620px) {
+  .site-header { padding: 0 1.5rem; }
+  .main-nav { display: none; }
+  .nav-toggle { display: flex; }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.2rem;
+    gap: 1rem;
+  }
+  .card-photo { aspect-ratio: 4 / 3; }
+
+  :root {
+    --susuki-w-l: 36vw;
+    --susuki-w-r: 36vw;
+  }
+
+  .site-footer { padding: 2.5rem 1.5rem; }
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+
+  .hero-content { padding-bottom: 7rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION  (respects system preference)
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .susuki-group-l,
+  .susuki-group-r,
+  .particle,
+  .scroll-line { animation: none !important; }
+
+  .hero-eyebrow,
+  .hero-divider,
+  .hero-title,
+  .hero-tagline,
+  .hero-tagline-en,
+  .hero-cta {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  html { scroll-behavior: auto; }
+}
