@@ -117,7 +117,10 @@
       </div>
       <p class="hero-tagline">満月の夜に宿る、秋の美味しさ。</p>
       <p class="hero-tagline-en">Flavours of autumn, born beneath the full moon.</p>
-      <a href="#collection" class="hero-cta"><span>Collection を見る</span></a>
+      <div class="hero-actions">
+        <a href="#collection" class="hero-cta hero-cta-main"><span>Collection</span></a>
+        <a href="#contact" class="hero-cta hero-cta-sub"><span>Gift Box</span></a>
+      </div>
     </div>
 
     <!-- Scroll indicator -->
@@ -133,7 +136,7 @@
   <section class="products-section" id="collection" aria-label="商品一覧">
     <div class="section-head reveal">
       <p class="section-label">Autumn Confections</p>
-      <h2 class="section-title">秋の和菓子</h2>
+      <h2 class="section-title">Collection</h2>
       <div class="section-rule" aria-hidden="true"></div>
       <p class="section-desc">北海道・信州の素材を丁寧に選び、<br>月明かりの下で仕上げた、秋だけの味わいです。</p>
     </div>
@@ -155,6 +158,7 @@
             <span class="card-price">¥380<span class="card-unit"> /個</span></span>
             <span class="card-tag">SEASONAL</span>
           </div>
+          <span class="card-action">Add to Gift Box</span>
         </div>
       </article>
 
@@ -173,6 +177,7 @@
             <span class="card-price">¥420<span class="card-unit"> /個</span></span>
             <span class="card-tag">SEASONAL</span>
           </div>
+          <span class="card-action">Add to Gift Box</span>
         </div>
       </article>
 
@@ -191,6 +196,7 @@
             <span class="card-price">¥450<span class="card-unit"> /本</span></span>
             <span class="card-tag">SIGNATURE</span>
           </div>
+          <span class="card-action">View Details</span>
         </div>
       </article>
 
@@ -209,6 +215,7 @@
             <span class="card-price">¥520<span class="card-unit"> /個</span></span>
             <span class="card-tag">LIMITED</span>
           </div>
+          <span class="card-action">View Details</span>
         </div>
       </article>
 
@@ -227,6 +234,7 @@
             <span class="card-price">¥380<span class="card-unit"> /個</span></span>
             <span class="card-tag">SEASONAL</span>
           </div>
+          <span class="card-action">Add to Gift Box</span>
         </div>
       </article>
 
@@ -245,6 +253,7 @@
             <span class="card-price">¥420<span class="card-unit"> /本</span></span>
             <span class="card-tag">CLASSIC</span>
           </div>
+          <span class="card-action">View Details</span>
         </div>
       </article>
 
@@ -263,6 +272,7 @@
             <span class="card-price">¥450<span class="card-unit"> /個</span></span>
             <span class="card-tag">SEASONAL</span>
           </div>
+          <span class="card-action">Add to Gift Box</span>
         </div>
       </article>
 
@@ -281,6 +291,7 @@
             <span class="card-price">¥520<span class="card-unit"> /個</span></span>
             <span class="card-tag">LIMITED</span>
           </div>
+          <span class="card-action">View Details</span>
         </div>
       </article>
 
@@ -293,13 +304,17 @@
   <section class="about-section" id="about" aria-label="ブランドについて">
     <div class="about-inner">
       <div class="about-ornament reveal" aria-hidden="true"></div>
-      <h2 class="about-title reveal">月の兎が、餅をつく夜に</h2>
+      <h2 class="about-title reveal">About</h2>
       <div class="about-divider reveal" aria-hidden="true"></div>
       <p class="about-body reveal">
         秋の満月を仰ぎながら、<br>
         一つひとつ、手で丁寧に。<br>
-        月兎和菓子は、日本の秋を<br>
-        そのまま包んだ菓子を届けます。
+        季節の素材と職人の手仕事で、<br>
+        日本の秋をそっと包みます。
+      </p>
+      <p class="about-note reveal">
+        贈り物としての美しさと、月夜に楽しむ静かな余韻を大切に。<br>
+        甘さは控えめに、香りと余白を丁寧に仕立てています。
       </p>
       <div class="about-divider reveal" aria-hidden="true"></div>
       <p class="about-en reveal">
@@ -310,15 +325,58 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
+       STORE INFO
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="store-section" id="contact" aria-label="店舗情報">
+    <div class="store-inner reveal">
+      <div class="store-head">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Store Info</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="store-content">
+        <div class="store-details">
+          <p class="store-name">Tsuki Usagi Wagashi</p>
+          <dl class="store-list">
+            <div>
+              <dt>Location</dt>
+              <dd>Tokyo, Japan</dd>
+            </div>
+            <div>
+              <dt>Open</dt>
+              <dd>10:00 - 18:00</dd>
+            </div>
+            <div>
+              <dt>Closed</dt>
+              <dd>Wednesday</dd>
+            </div>
+            <div>
+              <dt>Service</dt>
+              <dd>Online Reservation / Gift Order Available</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="store-message">
+          <p>
+            季節の和菓子や贈答用の詰め合わせは、店頭・オンラインのどちらでもご予約いただけます。
+            大切な方への贈り物や、月を眺める静かな夜のお供に、上品な甘さをお届けします。
+          </p>
+          <a href="#contact" class="store-cta"><span>Reserve Gift Box</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
        FOOTER
        ═══════════════════════════════════════════════════════════ -->
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo-jp">月兎和菓子</span>
         <span class="footer-logo-en">Tsuki Usagi Wagashi</span>
       </div>
-      <p class="footer-copy">&copy; 2024 月兎和菓子. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Tsuki Usagi Wagashi. All rights reserved.</p>
     </div>
   </footer>
 
