@@ -3,380 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="月兎和菓子 — 秋の限定品。満月の夜に宿る、秋の美味しさ。">
-  <title>月兎和菓子 — Autumn Collection</title>
+  <meta name="description" content="月兎和菓子 - 秋の和菓子と贈答用ギフトを扱う上質なオンラインストア。">
+  <title>月兎和菓子 - Tsuki Usagi Wagashi Online Store</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- ─── Light particles (subtle, ambient) ─────────────────── -->
   <div class="particles" aria-hidden="true" id="particles"></div>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       HEADER
-       ═══════════════════════════════════════════════════════════ -->
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="#" class="logo">
+      <a href="#home" class="logo" aria-label="月兎和菓子 ホーム">
         <span class="logo-jp">月兎和菓子</span>
         <span class="logo-en">Tsuki Usagi Wagashi</span>
       </a>
+
       <nav class="main-nav" id="main-nav" aria-label="メインナビゲーション">
+        <a href="#home">Home</a>
         <a href="#collection">Collection</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#best-sellers">Best Sellers</a>
+        <a href="#gift-box">Gift Box</a>
+        <a href="#shop-guide">Shop Guide</a>
+        <a href="#faq">FAQ</a>
+        <a href="#store">Store</a>
+        <a href="#cart" class="nav-cart-link">Cart <span class="cart-count" data-cart-count>0</span></a>
       </nav>
+
+      <a href="#cart" class="header-cart" aria-label="カートを見る">
+        <span class="cart-mark" aria-hidden="true"></span>
+        <span>Cart</span>
+        <strong data-cart-count>0</strong>
+      </a>
+
       <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       HERO
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="hero" aria-label="ヒーロー">
+  <main>
+    <section class="hero" id="home" aria-label="月兎和菓子オンラインストア">
+      <div class="hero-bg" role="img" aria-label="満月とすすきの秋の夜景"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- Background image (images/tsukimi-hero.jpg) -->
-    <div class="hero-bg" role="img" aria-label="満月とすすきの秋の夜景"></div>
-
-    <!-- Cinematic overlay -->
-    <div class="hero-overlay" aria-hidden="true"></div>
-
-
-    <!-- ── Susuki (pampas grass) ─────────────────────────────
-         If images/susuki-left.png and images/susuki-right.png exist
-         they are shown via .susuki-img; SVG fallback is always present.
-         WIDTH ADJUST: --susuki-w-l / --susuki-w-r in style.css :root ── -->
-    <div class="susuki-left" aria-hidden="true">
-      <img class="susuki-img" src="images/susuki-left.png" alt="" onerror="this.style.display='none'">
-      <svg class="susuki-svg" viewBox="0 0 220 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet">
-        <g class="susuki-group-l">
-          <!-- Stems -->
-          <line x1="60"  y1="520" x2="48"  y2="180" stroke="#C8A84A" stroke-width="1.8" stroke-linecap="round" opacity=".72"/>
-          <line x1="90"  y1="520" x2="82"  y2="150" stroke="#B89840" stroke-width="1.6" stroke-linecap="round" opacity=".68"/>
-          <line x1="120" y1="520" x2="115" y2="170" stroke="#C0A040" stroke-width="1.5" stroke-linecap="round" opacity=".60"/>
-          <line x1="40"  y1="520" x2="22"  y2="230" stroke="#A88830" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
-          <line x1="150" y1="520" x2="148" y2="200" stroke="#B09040" stroke-width="1.3" stroke-linecap="round" opacity=".50"/>
-          <!-- Plumes -->
-          <ellipse cx="48"  cy="168" rx="18" ry="42" transform="rotate(-14 48 168)"  fill="#C8A84A" opacity=".52" filter="url(#blur1)"/>
-          <ellipse cx="82"  cy="136" rx="16" ry="38" transform="rotate(-8 82 136)"   fill="#B89840" opacity=".48" filter="url(#blur1)"/>
-          <ellipse cx="115" cy="156" rx="14" ry="36" transform="rotate(6 115 156)"   fill="#C0A040" opacity=".42" filter="url(#blur1)"/>
-          <ellipse cx="22"  cy="218" rx="13" ry="30" transform="rotate(-18 22 218)"  fill="#A88830" opacity=".38" filter="url(#blur1)"/>
-          <ellipse cx="148" cy="188" rx="12" ry="28" transform="rotate(10 148 188)"  fill="#B09040" opacity=".34" filter="url(#blur1)"/>
-          <!-- Fine fronds -->
-          <line x1="48" y1="168" x2="30"  y2="130" stroke="#D4B860" stroke-width=".9" opacity=".45"/>
-          <line x1="48" y1="168" x2="66"  y2="125" stroke="#D4B860" stroke-width=".9" opacity=".40"/>
-          <line x1="82" y1="136" x2="65"  y2="98"  stroke="#C8A840" stroke-width=".8" opacity=".40"/>
-          <line x1="82" y1="136" x2="98"  y2="100" stroke="#C8A840" stroke-width=".8" opacity=".36"/>
-          <defs>
-            <filter id="blur1"><feGaussianBlur stdDeviation="3.5"/></filter>
-          </defs>
-        </g>
-      </svg>
-    </div>
-
-    <div class="susuki-right" aria-hidden="true">
-      <img class="susuki-img" src="images/susuki-right.png" alt="" onerror="this.style.display='none'">
-      <svg class="susuki-svg" viewBox="0 0 220 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
-        <g class="susuki-group-r">
-          <line x1="160" y1="520" x2="172" y2="185" stroke="#C8A84A" stroke-width="1.8" stroke-linecap="round" opacity=".72"/>
-          <line x1="130" y1="520" x2="138" y2="155" stroke="#B89840" stroke-width="1.6" stroke-linecap="round" opacity=".68"/>
-          <line x1="100" y1="520" x2="105" y2="175" stroke="#C0A040" stroke-width="1.5" stroke-linecap="round" opacity=".60"/>
-          <line x1="180" y1="520" x2="198" y2="235" stroke="#A88830" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
-          <line x1="70"  y1="520" x2="72"  y2="205" stroke="#B09040" stroke-width="1.3" stroke-linecap="round" opacity=".50"/>
-          <ellipse cx="172" cy="172" rx="18" ry="42" transform="rotate(14 172 172)"  fill="#C8A84A" opacity=".52" filter="url(#blur2)"/>
-          <ellipse cx="138" cy="141" rx="16" ry="38" transform="rotate(8 138 141)"   fill="#B89840" opacity=".48" filter="url(#blur2)"/>
-          <ellipse cx="105" cy="161" rx="14" ry="36" transform="rotate(-6 105 161)"  fill="#C0A040" opacity=".42" filter="url(#blur2)"/>
-          <ellipse cx="198" cy="222" rx="13" ry="30" transform="rotate(18 198 222)"  fill="#A88830" opacity=".38" filter="url(#blur2)"/>
-          <ellipse cx="72"  cy="193" rx="12" ry="28" transform="rotate(-10 72 193)"  fill="#B09040" opacity=".34" filter="url(#blur2)"/>
-          <line x1="172" y1="172" x2="190" y2="134" stroke="#D4B860" stroke-width=".9" opacity=".45"/>
-          <line x1="172" y1="172" x2="154" y2="129" stroke="#D4B860" stroke-width=".9" opacity=".40"/>
-          <line x1="138" y1="141" x2="155" y2="103" stroke="#C8A840" stroke-width=".8" opacity=".40"/>
-          <line x1="138" y1="141" x2="122" y2="105" stroke="#C8A840" stroke-width=".8" opacity=".36"/>
-          <defs>
-            <filter id="blur2"><feGaussianBlur stdDeviation="3.5"/></filter>
-          </defs>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Hero text -->
-    <div class="hero-content">
-      <p class="hero-eyebrow">Tsuki Usagi Wagashi — Autumn Collection</p>
-      <div class="hero-divider" aria-hidden="true"></div>
-      <div class="hero-title">
-        <h1 class="hero-title-jp">月兎和菓子</h1>
-        <p class="hero-title-badge">秋の限定品</p>
+      <div class="susuki-left" aria-hidden="true">
+        <svg class="susuki-svg" viewBox="0 0 220 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet">
+          <g class="susuki-group-l">
+            <line x1="60" y1="520" x2="48" y2="180" stroke="#C8A84A" stroke-width="1.8" stroke-linecap="round" opacity=".72"/>
+            <line x1="90" y1="520" x2="82" y2="150" stroke="#B89840" stroke-width="1.6" stroke-linecap="round" opacity=".68"/>
+            <line x1="120" y1="520" x2="115" y2="170" stroke="#C0A040" stroke-width="1.5" stroke-linecap="round" opacity=".60"/>
+            <line x1="40" y1="520" x2="22" y2="230" stroke="#A88830" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
+            <line x1="150" y1="520" x2="148" y2="200" stroke="#B09040" stroke-width="1.3" stroke-linecap="round" opacity=".50"/>
+            <ellipse cx="48" cy="168" rx="18" ry="42" transform="rotate(-14 48 168)" fill="#C8A84A" opacity=".52" filter="url(#blur1)"/>
+            <ellipse cx="82" cy="136" rx="16" ry="38" transform="rotate(-8 82 136)" fill="#B89840" opacity=".48" filter="url(#blur1)"/>
+            <ellipse cx="115" cy="156" rx="14" ry="36" transform="rotate(6 115 156)" fill="#C0A040" opacity=".42" filter="url(#blur1)"/>
+            <ellipse cx="22" cy="218" rx="13" ry="30" transform="rotate(-18 22 218)" fill="#A88830" opacity=".38" filter="url(#blur1)"/>
+            <ellipse cx="148" cy="188" rx="12" ry="28" transform="rotate(10 148 188)" fill="#B09040" opacity=".34" filter="url(#blur1)"/>
+            <defs><filter id="blur1"><feGaussianBlur stdDeviation="3.5"/></filter></defs>
+          </g>
+        </svg>
       </div>
-      <p class="hero-tagline">満月の夜に宿る、秋の美味しさ。</p>
-      <p class="hero-tagline-en">Flavours of autumn, born beneath the full moon.</p>
-      <div class="hero-actions">
-        <a href="#collection" class="hero-cta hero-cta-main"><span>Collection</span></a>
-        <a href="#contact" class="hero-cta hero-cta-sub"><span>Gift Box</span></a>
+
+      <div class="susuki-right" aria-hidden="true">
+        <svg class="susuki-svg" viewBox="0 0 220 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
+          <g class="susuki-group-r">
+            <line x1="160" y1="520" x2="172" y2="185" stroke="#C8A84A" stroke-width="1.8" stroke-linecap="round" opacity=".72"/>
+            <line x1="130" y1="520" x2="138" y2="155" stroke="#B89840" stroke-width="1.6" stroke-linecap="round" opacity=".68"/>
+            <line x1="100" y1="520" x2="105" y2="175" stroke="#C0A040" stroke-width="1.5" stroke-linecap="round" opacity=".60"/>
+            <line x1="180" y1="520" x2="198" y2="235" stroke="#A88830" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
+            <line x1="70" y1="520" x2="72" y2="205" stroke="#B09040" stroke-width="1.3" stroke-linecap="round" opacity=".50"/>
+            <ellipse cx="172" cy="172" rx="18" ry="42" transform="rotate(14 172 172)" fill="#C8A84A" opacity=".52" filter="url(#blur2)"/>
+            <ellipse cx="138" cy="141" rx="16" ry="38" transform="rotate(8 138 141)" fill="#B89840" opacity=".48" filter="url(#blur2)"/>
+            <ellipse cx="105" cy="161" rx="14" ry="36" transform="rotate(-6 105 161)" fill="#C0A040" opacity=".42" filter="url(#blur2)"/>
+            <ellipse cx="198" cy="222" rx="13" ry="30" transform="rotate(18 198 222)" fill="#A88830" opacity=".38" filter="url(#blur2)"/>
+            <ellipse cx="72" cy="193" rx="12" ry="28" transform="rotate(-10 72 193)" fill="#B09040" opacity=".34" filter="url(#blur2)"/>
+            <defs><filter id="blur2"><feGaussianBlur stdDeviation="3.5"/></filter></defs>
+          </g>
+        </svg>
       </div>
-    </div>
 
-    <!-- Scroll indicator -->
-    <div class="scroll-indicator" aria-hidden="true">
-      <span class="scroll-line"></span>
-    </div>
-
-  </section><!-- /hero -->
-
-  <!-- ═══════════════════════════════════════════════════════════
-       PRODUCT COLLECTION
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="products-section" id="collection" aria-label="商品一覧">
-    <div class="section-head reveal">
-      <p class="section-label">Autumn Confections</p>
-      <h2 class="section-title">Collection</h2>
-      <div class="section-rule" aria-hidden="true"></div>
-      <p class="section-desc">北海道・信州の素材を丁寧に選び、<br>月明かりの下で仕上げた、秋だけの味わいです。</p>
-    </div>
-
-    <div class="product-grid">
-
-      <!-- 1. おはぎ -->
-      <article class="card reveal" tabindex="0" aria-label="おはぎ — ¥380">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#1A0808;--fb-to:#090402;"></div>
-          <img src="images/ohagi.jpg" alt="おはぎ — 滑らかな粒あんをもち米で包んだ和菓子" loading="lazy">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Tsuki Usagi Wagashi Online Store</p>
+        <div class="hero-badges" aria-label="販売情報">
+          <span>秋限定</span>
+          <span>数量限定</span>
+          <span>ギフト対応</span>
         </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">おはぎ</p>
-          <p class="card-name-en">Ohagi</p>
-          <p class="card-desc">北海道産の小豆を丁寧に炊き上げた<br>なめらかな粒あんを、もち米で包みました。</p>
-          <div class="card-footer">
-            <span class="card-price">¥380<span class="card-unit"> /個</span></span>
-            <span class="card-tag">SEASONAL</span>
+        <h1 class="hero-title-jp">月を待つ夜に、<br>秋を包む和菓子を。</h1>
+        <p class="hero-copy">栗、抹茶、柚子、ほうじ茶。季節の香りを静かに重ねた和菓子を、ご自宅用にも大切な方への贈り物にもお選びいただけます。</p>
+        <div class="hero-actions">
+          <a href="#collection" class="btn btn-primary">Shop Collection</a>
+          <a href="#gift-box" class="btn btn-secondary">Build Gift Box</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="collection" aria-label="商品一覧">
+      <div class="section-head reveal">
+        <p class="section-label">Autumn Confections</p>
+        <h2 class="section-title">Collection</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+        <p class="section-desc">月兎和菓子の秋商品を一つずつ。単品、季節の手土産、詰め合わせ用としてお選びください。</p>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section class="best-section" id="best-sellers" aria-label="人気商品">
+      <div class="section-head reveal">
+        <p class="section-label">Customer Favorites</p>
+        <h2 class="section-title">Best Sellers</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+        <p class="section-desc">季節の贈答やお月見の席で選ばれている、月兎和菓子の定番人気です。</p>
+      </div>
+      <div class="best-grid" id="best-grid"></div>
+    </section>
+
+    <section class="gift-section" id="gift-box" aria-label="ギフトボックス">
+      <div class="section-head reveal">
+        <p class="section-label">Seasonal Gifting</p>
+        <h2 class="section-title">Gift Box</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+        <p class="section-desc">秋の贈り物、お月見の手土産、敬老の日、季節のご挨拶、法人向けギフトに。</p>
+      </div>
+      <div class="gift-grid" id="gift-grid"></div>
+    </section>
+
+    <section class="cart-section" id="cart" aria-label="カートプレビュー">
+      <div class="cart-inner reveal">
+        <div class="cart-copy">
+          <p class="section-label">Order Review</p>
+          <h2 class="section-title">Cart Preview</h2>
+          <div class="section-rule left-rule" aria-hidden="true"></div>
+          <p>商品をカートに入れると、数量・小計・送料・合計金額がこちらに反映されます。贈答用の内容確認にもご利用ください。</p>
+          <p class="demo-note">※このサイトはデモサイトのため、実際の購入機能はありません。</p>
+        </div>
+        <div class="cart-panel">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-summary" aria-label="カート合計">
+            <div><span>小計</span><strong id="cart-subtotal">¥0</strong></div>
+            <div><span>送料</span><strong id="cart-shipping">¥0</strong></div>
+            <div class="summary-total"><span>合計</span><strong id="cart-total">¥0</strong></div>
           </div>
-          <span class="card-action">Add to Gift Box</span>
+          <button class="btn btn-primary checkout-btn" type="button">Checkout</button>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <!-- 2. 牡丹餅 -->
-      <article class="card reveal" tabindex="0" aria-label="牡丹餅 — ¥420">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#1A0A10;--fb-to:#090405;"></div>
-          <img src="images/botamochi.jpg" alt="牡丹餅 — もち米の粒感を残した甘さ控えめの和菓子" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">牡丹餅</p>
-          <p class="card-name-en">Botamochi</p>
-          <p class="card-desc">もち米の粒感を残した餡で包んだ、<br>上品な甘さの伝統の味わい。</p>
-          <div class="card-footer">
-            <span class="card-price">¥420<span class="card-unit"> /個</span></span>
-            <span class="card-tag">SEASONAL</span>
-          </div>
-          <span class="card-action">Add to Gift Box</span>
-        </div>
-      </article>
-
-      <!-- 3. 月見団子 -->
-      <article class="card reveal" tabindex="0" aria-label="月見団子 — ¥450">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#0A0A1A;--fb-to:#040408;"></div>
-          <img src="images/tsukimi-dango.jpg" alt="月見団子 — 満月を模した黄味餡を乗せた白玉団子" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">月見団子</p>
-          <p class="card-name-en">Tsukimi Dango</p>
-          <p class="card-desc">満月に見立てた黄味餡をのせた、<br>もちもちの白玉団子。</p>
-          <div class="card-footer">
-            <span class="card-price">¥450<span class="card-unit"> /本</span></span>
-            <span class="card-tag">SIGNATURE</span>
-          </div>
-          <span class="card-action">View Details</span>
-        </div>
-      </article>
-
-      <!-- 4. 栗きんとん -->
-      <article class="card reveal" tabindex="0" aria-label="栗きんとん — ¥520">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#1A1208;--fb-to:#090603;"></div>
-          <img src="images/kuri-kinton.jpg" alt="栗きんとん — 信州産の栗を使った季節限定の上生菓子" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">栗きんとん</p>
-          <p class="card-name-en">Kuri Kinton</p>
-          <p class="card-desc">信州産の栗を贅沢に使用した、<br>季節限定の上生菓子。</p>
-          <div class="card-footer">
-            <span class="card-price">¥520<span class="card-unit"> /個</span></span>
-            <span class="card-tag">LIMITED</span>
-          </div>
-          <span class="card-action">View Details</span>
-        </div>
-      </article>
-
-      <!-- 5. きなこ餅 -->
-      <article class="card reveal" tabindex="0" aria-label="きなこ餅 — ¥380">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#1A1408;--fb-to:#090704;"></div>
-          <img src="images/kinako-mochi.jpg" alt="きなこ餅 — 香ばしいきなこをまぶした懐かしい味わいの餅" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">きなこ餅</p>
-          <p class="card-name-en">Kinako Mochi</p>
-          <p class="card-desc">香ばしいきなことやさしい甘さの餅。<br>素朴で懐かしい味わい。</p>
-          <div class="card-footer">
-            <span class="card-price">¥380<span class="card-unit"> /個</span></span>
-            <span class="card-tag">SEASONAL</span>
-          </div>
-          <span class="card-action">Add to Gift Box</span>
-        </div>
-      </article>
-
-      <!-- 6. みたらし団子 -->
-      <article class="card reveal" tabindex="0" aria-label="みたらし団子 — ¥420">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#1A0E04;--fb-to:#090502;"></div>
-          <img src="images/mitarashi-dango.jpg" alt="みたらし団子 — 甘辛のみたらしタレをたっぷり絡めた団子" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">みたらし団子</p>
-          <p class="card-name-en">Mitarashi Dango</p>
-          <p class="card-desc">もちもちの団子に、甘辛のみたらしタレを<br>たっぷり絡めました。</p>
-          <div class="card-footer">
-            <span class="card-price">¥420<span class="card-unit"> /本</span></span>
-            <span class="card-tag">CLASSIC</span>
-          </div>
-          <span class="card-action">View Details</span>
-        </div>
-      </article>
-
-      <!-- 7. 抹茶最中 -->
-      <article class="card reveal" tabindex="0" aria-label="抹茶最中 — ¥450">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#081408;--fb-to:#030803;"></div>
-          <img src="images/matcha-monaka.jpg" alt="抹茶最中 — 香り高い抹茶餡と小豆餡を最中種で挟んだ和菓子" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">抹茶最中</p>
-          <p class="card-name-en">Matcha Monaka</p>
-          <p class="card-desc">香り高い抹茶餡と小豆餡を、<br>香ばしい最中種で挟みました。</p>
-          <div class="card-footer">
-            <span class="card-price">¥450<span class="card-unit"> /個</span></span>
-            <span class="card-tag">SEASONAL</span>
-          </div>
-          <span class="card-action">Add to Gift Box</span>
-        </div>
-      </article>
-
-      <!-- 8. 栗羊羹 -->
-      <article class="card reveal" tabindex="0" aria-label="栗羊羹 — ¥520">
-        <div class="card-photo">
-          <div class="card-photo-fallback" style="--fb-from:#100A04;--fb-to:#060402;"></div>
-          <img src="images/kuri-yokan.jpg" alt="栗羊羹 — 栗の風味豊かな羊羹に大粒の栗を閉じ込めた和菓子" loading="lazy">
-        </div>
-        <div class="card-rule" aria-hidden="true"></div>
-        <div class="card-body">
-          <p class="card-name-jp">栗羊羹</p>
-          <p class="card-name-en">Kuri Yokan</p>
-          <p class="card-desc">栗の風味豊かな羊羹に、<br>大粒の栗を閉じ込めました。</p>
-          <div class="card-footer">
-            <span class="card-price">¥520<span class="card-unit"> /個</span></span>
-            <span class="card-tag">LIMITED</span>
-          </div>
-          <span class="card-action">View Details</span>
-        </div>
-      </article>
-
-    </div><!-- /product-grid -->
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       ABOUT
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="about-section" id="about" aria-label="ブランドについて">
-    <div class="about-inner">
-      <div class="about-ornament reveal" aria-hidden="true"></div>
-      <h2 class="about-title reveal">About</h2>
-      <div class="about-divider reveal" aria-hidden="true"></div>
-      <p class="about-body reveal">
-        秋の満月を仰ぎながら、<br>
-        一つひとつ、手で丁寧に。<br>
-        季節の素材と職人の手仕事で、<br>
-        日本の秋をそっと包みます。
-      </p>
-      <p class="about-note reveal">
-        贈り物としての美しさと、月夜に楽しむ静かな余韻を大切に。<br>
-        甘さは控えめに、香りと余白を丁寧に仕立てています。
-      </p>
-      <div class="about-divider reveal" aria-hidden="true"></div>
-      <p class="about-en reveal">
-        Each confection is a quiet celebration of autumn —<br>
-        shaped by hand, beneath the light of the harvest moon.
-      </p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       STORE INFO
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="store-section" id="contact" aria-label="店舗情報">
-    <div class="store-inner reveal">
-      <div class="store-head">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Store Info</h2>
+    <section class="guide-section" id="shop-guide" aria-label="ショップガイド">
+      <div class="section-head reveal">
+        <p class="section-label">Before Ordering</p>
+        <h2 class="section-title">Shop Guide</h2>
         <div class="section-rule" aria-hidden="true"></div>
       </div>
-      <div class="store-content">
-        <div class="store-details">
-          <p class="store-name">Tsuki Usagi Wagashi</p>
-          <dl class="store-list">
-            <div>
-              <dt>Location</dt>
-              <dd>Tokyo, Japan</dd>
-            </div>
-            <div>
-              <dt>Open</dt>
-              <dd>10:00 - 18:00</dd>
-            </div>
-            <div>
-              <dt>Closed</dt>
-              <dd>Wednesday</dd>
-            </div>
-            <div>
-              <dt>Service</dt>
-              <dd>Online Reservation / Gift Order Available</dd>
-            </div>
-          </dl>
+      <div class="guide-grid">
+        <article class="info-card reveal"><h3>配送について</h3><p>ご注文確認後、通常2〜4日以内に発送いたします。季節商品は製造日に合わせてお届けします。</p></article>
+        <article class="info-card reveal"><h3>送料について</h3><p>全国一律¥880。冷蔵便対象商品を含む場合は品質保持のため専用便でお届けします。</p></article>
+        <article class="info-card reveal"><h3>お支払い方法</h3><p>クレジットカード、銀行振込、店頭決済を想定したデモ表示です。</p></article>
+        <article class="info-card reveal"><h3>ギフト包装</h3><p>熨斗、季節掛け紙、手提げ袋のご用意が可能です。用途に合わせて上品に包みます。</p></article>
+        <article class="info-card reveal"><h3>消費期限</h3><p>生菓子は製造日含め2〜3日、羊羹などの日持ち商品は商品ごとに表示します。</p></article>
+        <article class="info-card reveal"><h3>アレルギー表示</h3><p>小麦、卵、乳、そば、落花生、くるみ等の特定原材料は各商品詳細でご確認いただけます。</p></article>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" aria-label="よくあるご質問">
+      <div class="section-head reveal">
+        <p class="section-label">Questions</p>
+        <h2 class="section-title">FAQ</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal" open><summary>オンラインで購入できますか？</summary><p>このページはデモサイトですが、実店舗では季節商品や詰め合わせのご予約を承る想定です。</p></details>
+        <details class="faq-item reveal"><summary>ギフト包装はできますか？</summary><p>熨斗、掛け紙、手提げ袋など、用途に合わせた包装を承ります。法人ギフトもご相談ください。</p></details>
+        <details class="faq-item reveal"><summary>配送日は指定できますか？</summary><p>製造日と配送エリアにより調整可能です。お月見や敬老の日などのご利用日は早めのご予約をおすすめします。</p></details>
+        <details class="faq-item reveal"><summary>賞味期限はどのくらいですか？</summary><p>生菓子は短め、羊羹や最中は比較的日持ちします。商品ごとに品質が保てる期間を明記します。</p></details>
+        <details class="faq-item reveal"><summary>アレルギー表示はありますか？</summary><p>各商品詳細に原材料とアレルギー情報を掲載する想定です。気になる点は事前にお問い合わせください。</p></details>
+        <details class="faq-item reveal"><summary>法人ギフトの相談はできますか？</summary><p>数量、納期、掛け紙、配送先分納などに合わせてご提案します。季節のご挨拶にも対応します。</p></details>
+      </div>
+    </section>
+
+    <section class="store-section" id="store" aria-label="店舗情報とお問い合わせ">
+      <div class="store-inner reveal">
+        <div class="store-head">
+          <p class="section-label">Store & Contact</p>
+          <h2 class="section-title">Store Info</h2>
+          <div class="section-rule" aria-hidden="true"></div>
         </div>
-        <div class="store-message">
-          <p>
-            季節の和菓子や贈答用の詰め合わせは、店頭・オンラインのどちらでもご予約いただけます。
-            大切な方への贈り物や、月を眺める静かな夜のお供に、上品な甘さをお届けします。
-          </p>
-          <a href="#contact" class="store-cta"><span>Reserve Gift Box</span></a>
+        <div class="store-content">
+          <div class="store-details">
+            <p class="store-name">Tsuki Usagi Wagashi</p>
+            <dl class="store-list">
+              <div><dt>Store</dt><dd>Tokyo, Japan</dd></div>
+              <div><dt>Open</dt><dd>10:00 - 18:00 / 水曜定休</dd></div>
+              <div><dt>Online Order</dt><dd>季節商品・詰め合わせの予約受付</dd></div>
+              <div><dt>Gift Reservation</dt><dd>お月見・敬老の日・季節のご挨拶</dd></div>
+              <div><dt>Corporate Gift</dt><dd>法人向け数量注文・分納相談</dd></div>
+              <div><dt>Contact</dt><dd>gift@tsukiusagi.example</dd></div>
+            </dl>
+          </div>
+          <div class="store-message">
+            <p>月兎和菓子では、季節の素材を活かした和菓子と贈答用の詰め合わせをご提案します。用途、人数、ご予算に合わせて、上品な余韻の残る贈り物をお仕立てします。</p>
+            <div class="store-actions">
+              <a href="#gift-box" class="btn btn-primary">Reserve Gift Box</a>
+              <a href="#store" class="btn btn-secondary">Contact for Gift Order</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo-jp">月兎和菓子</span>
         <span class="footer-logo-en">Tsuki Usagi Wagashi</span>
       </div>
-      <p class="footer-copy">&copy; 2026 Tsuki Usagi Wagashi. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Tsuki Usagi Wagashi. Demo online store.</p>
     </div>
   </footer>
 
